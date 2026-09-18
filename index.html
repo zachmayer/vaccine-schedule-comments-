@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ten-minute walkthrough for posting a public comment on HHS docket HHS-OS-2026-0332 before September 20, 2026.">
+<title>Vaccine Comment</title>
+</head>
+<body>
+<style>
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+  /* USWDS system tokens, dark-theme roles: tonal surfaces, off-white text, light desaturated accent */
+  :root {
+    --primary-darker: #162E51; --primary-dark: #1A4480; --primary-light: #73B3E7; --primary-lighter: #D9E8F6;
+    --surface-1: #1E3A66; --surface-2: #2B4A7E;
+    --accent: #97D4EA; --accent-hover: #B5E2F2;
+    --text: #F0F0F0; --text-muted: #D9E8F6; --ink: #1B1B1B;
+  }
+  html, body { height: 100%; }
+  body {
+    background: var(--primary-darker); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 1.3rem; line-height: 1.5;
+    padding-inline: 1rem; padding-block: 1rem 1.5rem; display: flex; flex-direction: column; box-sizing: border-box;
+  }
+  .app { max-width: 32rem; width: 100%; margin: 0 auto; display: flex; flex-direction: column; flex: 1; gap: 1.5rem; }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.25rem, 6vw, 1.7rem); line-height: 1.2; margin: 0 0 .5rem; white-space: nowrap; }
+  p { margin: 0; }
+  .countdown { color: var(--text-muted); font-size: 1.1rem; }
+
+  /* USWDS step indicator */
+  .usa-step-indicator__segments { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+  .usa-step-indicator__segment { flex: 1; height: .5rem; background: var(--surface-2); }
+  .usa-step-indicator__segment--complete, .usa-step-indicator__segment--current { background: var(--accent); }
+  .usa-step-indicator__heading { margin: .75rem 0 0; font-size: 1.15rem; }
+  .usa-step-indicator__current-step { font-weight: 700; }
+  .usa-step-indicator__total-steps { color: var(--text-muted); margin-right: .5rem; }
+
+  /* USWDS process list */
+  .usa-process-list { list-style: none; margin: 0; padding: 0; }
+  .usa-process-list__item { position: relative; padding: .5rem 0 1.75rem 4.25rem; }
+  .usa-process-list__item:last-child { padding-bottom: 0; }
+  .usa-process-list__item::before {
+    content: attr(data-step); position: absolute; left: 0; top: 0;
+    width: 3.25rem; height: 3.25rem; border-radius: 50%; box-sizing: border-box;
+    background: var(--text); border: .25rem solid var(--primary-light); color: var(--primary-darker);
+    font-weight: 700; font-size: 1.5rem; display: grid; place-items: center; font-variant-numeric: tabular-nums;
+  }
+  .usa-process-list__item::after { content: ""; position: absolute; left: 1.375rem; top: 3.25rem; bottom: 0; width: .5rem; background: var(--surface-2); }
+  .usa-process-list__item:last-child::after { display: none; }
+
+  /* USWDS buttons */
+  .usa-button {
+    display: inline-block; font: inherit; font-weight: 700; line-height: 1; text-decoration: none; cursor: pointer;
+    padding: 1rem 1.5rem; border-radius: .25rem; border: 0; margin-top: .75rem; touch-action: manipulation;
+    background: var(--accent); color: var(--ink);
+  }
+  .usa-button:hover { background: var(--accent-hover); }
+  .usa-button--outline { background: transparent; color: var(--text); box-shadow: inset 0 0 0 2px var(--text); }
+  .usa-button--outline:hover { background: var(--surface-1); }
+  .usa-button:focus-visible { outline: .25rem solid var(--text); outline-offset: .25rem; }
+  .usa-button[disabled] { visibility: hidden; }
+  .usa-process-list__item > .usa-button:first-child { margin-top: .125rem; }
+
+  .status { display: block; color: var(--text-muted); font-size: 1rem; margin-top: .5rem; min-height: 1.5em; }
+  details { margin-top: .25rem; }
+  summary { color: var(--accent); font-size: 1rem; cursor: pointer; }
+  pre { margin: .5rem 0 0; background: var(--surface-1); padding: .75rem 1rem; border-radius: .25rem; white-space: pre-wrap; word-wrap: break-word; font-size: 15px; line-height: 1.4; font-family: inherit; }
+  nav { margin-top: auto; display: flex; gap: .75rem; justify-content: space-between; padding-top: .5rem; }
+  nav .usa-button { margin-top: 0; }
+  nav #next { flex: 1; text-align: center; }
+</style>
+
+<div class="app">
+  <div class="usa-step-indicator" id="indicator">
+    <ol class="usa-step-indicator__segments">
+      <li class="usa-step-indicator__segment usa-step-indicator__segment--current"></li>
+      <li class="usa-step-indicator__segment"></li>
+      <li class="usa-step-indicator__segment"></li>
+    </ol>
+    <p class="usa-step-indicator__heading"><span class="usa-step-indicator__current-step" id="cur">1</span> <span class="usa-step-indicator__total-steps">of 3</span><span id="label">Write it</span></p>
+  </div>
+
+  <section class="screen" data-label="Write it">
+    <div>
+      <h1>Keep the vaccine schedule!</h1>
+      <p class="countdown" id="countdown"></p>
+    </div>
+    <ol class="usa-process-list">
+      <li class="usa-process-list__item" data-step="1">
+        <button class="usa-button" id="copy" type="button">Copy prompt</button>
+        <span class="status" id="status"></span>
+        <details id="reveal"><summary>Show prompt</summary>
+<pre id="prompt">I want to submit a public comment on HHS docket HHS-OS-2026-0332. Comments are due September 20, 2026. My position: keep the existing federal vaccine recommendation categories exactly as they are (routine, risk-based, and shared clinical decision-making). No new categories, and no vaccine moved out of routine.
+
+Background, from Your Local Epidemiologist (Sept 18, 2026):
+- On August 24, 2026, HHS published a Request for Information titled "Categories Used in Federal Vaccine Recommendations and the Role of Shared Clinical Decision-Making." On its face, it asks whether the current categories are adequate or whether other categories should be added. But it goes far beyond that, also asking how to weigh scientific evidence, how to approach limited randomized controlled trial data, and how to handle vaccine requirements, freedom, and parental consent. Legitimate, narrow questions are mixed with much broader ones that signal an attempt to build the case for major policy shifts without going through the accountability process already in place for vaccines.
+- An RFI is a formal request for public input. The comments become the administrative record for whatever HHS does next. If HHS later adopts changes that ignore the comments, that record is what a court looks at. A thin or one-sided record makes changes easier to defend.
+- It follows Executive Order 14420, which endorsed cutting the childhood schedule from 18 diseases to 11 and directed HHS to pursue single-antigen MMR shots instead of the combined vaccine.
+- This isn't HHS's first attempt. In January 2026, HHS moved several routine childhood vaccines (including hepatitis A, hepatitis B, flu, and meningococcal) into the shared clinical decision-making category without ACIP input. A federal judge blocked those changes in March.
+- The comment window is unusually short: 30 days, compared with the typical 60 or 90 days for significant HHS actions.
+
+Why this matters:
+- Confusion. New categories will create confusion among parents, caregivers, clinicians, and the public. Parents may misunderstand which vaccines are beneficial, and clinicians may be unsure about what they should confidently recommend.
+- Insurance coverage. Vaccines get no-cost coverage under the ACA and the Vaccines for Children program because they are on the CDC schedule as ACIP recommendations. The ACIP link guarantees coverage. This RFI is the first step in a longer process that could break that link, either by creating a category outside ACIP or by narrowing or removing recommendations. A vaccine that loses its ACIP link could mean a copay, a prior authorization hurdle, or no coverage at all.
+- Default behavior in the system. Electronic health record and immunization registry reminders, school-entry requirements, and pharmacist standing orders are all built around "routine" recommendations. Many state laws and pharmacist scope-of-practice rules key off that specific word, so relabeling creates confusion at the state level. Moving a vaccine out of that category adds implementation barriers that erode access.
+- HHS's own notice cites the evidence: footnote 8 shows fewer than half of doctors knew SCDM vaccines are covered and most say it confuses patients; footnote 9 cites lower use of a pneumococcal vaccine after it moved to SCDM.
+
+First, in one message, ask me only what you don't already know about me:
+1. Who I am (role, town, state)
+2. Why vaccines matter to me (1-3 real things)
+3. One true story (a shot, its cost, a school form, a disease I remember)
+Short answers are fine. Then put the comment in a plain text artifact by itself, with no commentary before or after it, so I can copy it with one tap.
+
+Rules for the comment:
+1. First line: "Department of Health and Human Services, Docket No. HHS-OS-2026-0332". The docket number must appear.
+2. Answer specific questions from section II of the notice, starting each answer with its number in brackets, like [B.4] or [E.17]. Pick the ones that fit me. Parents: [A.3] consent and [C.10] autonomy. Pediatric practice: [A.1] clarity, [B.7] visit timing, [C.11] time and dose costs. Labor and delivery: [B.4] new categories such as "recommended, but not during infancy". Pharmacists: [C.11] to [C.13] time burden, coverage confusion, implementation. Health department: [B.6] coverage and state law, [E.16] mandates and trust, [E.18] measuring outcomes. Anyone can answer [A.1] are the categories clear and adequate, [B.4] should new ones be added, and [C.11] risks of SCDM.
+3. Ask HHS to keep the categories as they are, add none, and send any change through ACIP with published evidence.
+4. Do not say SCDM vaccines lose coverage; today they are covered. The risk is a category outside ACIP, or a recommendation narrowed or removed.
+5. Plain first person, under 4,000 characters, no bullets, no em dashes, no Claudisms, sound like me. One specific story from my life is worth more on the record than any general argument.</pre>
+        </details>
+      </li>
+      <li class="usa-process-list__item" data-step="2">Open a new chat at <a href="https://claude.ai/new">claude.ai</a>. Other AIs work too.</li>
+      <li class="usa-process-list__item" data-step="3">Paste the prompt.</li>
+      <li class="usa-process-list__item" data-step="4">Send it to Claude.</li>
+    </ol>
+  </section>
+
+  <section class="screen" data-label="Check it" hidden>
+    <ol class="usa-process-list">
+      <li class="usa-process-list__item" data-step="5">Answer Claude's questions.</li>
+      <li class="usa-process-list__item" data-step="6">Tell Claude what to change.</li>
+      <li class="usa-process-list__item" data-step="7">Copy the comment from Claude.</li>
+      <li class="usa-process-list__item" data-step="8"><a class="usa-button" href="https://www.regulations.gov/commenton/HHS-OS-2026-0332-0001" target="_blank" rel="noopener">Open comment page</a></li>
+    </ol>
+  </section>
+
+  <section class="screen" data-label="Post it" hidden>
+    <ol class="usa-process-list">
+      <li class="usa-process-list__item" data-step="9">Paste it into the Comment box.</li>
+      <li class="usa-process-list__item" data-step="10">Choose "An Individual" and type your name.</li>
+      <li class="usa-process-list__item" data-step="11">Tick "I&#39;m not a robot."</li>
+      <li class="usa-process-list__item" data-step="12">Click Submit Comment. You are done when you see a tracking number.</li>
+    </ol>
+  </section>
+
+  <nav>
+    <button class="usa-button usa-button--outline" id="back" type="button" disabled>Back</button>
+    <button class="usa-button" id="next" type="button">Next</button>
+  </nav>
+</div>
+
+<script>
+  (function () {
+    var screens = [].slice.call(document.querySelectorAll('.screen'));
+    var segs = [].slice.call(document.querySelectorAll('.usa-step-indicator__segment'));
+    var back = document.getElementById('back'), next = document.getElementById('next');
+    var cur = document.getElementById('cur'), label = document.getElementById('label');
+    var i = 0;
+    function show(n) {
+      i = Math.max(0, Math.min(screens.length - 1, n));
+      screens.forEach(function (s, k) { s.hidden = k !== i; });
+      segs.forEach(function (s, k) {
+        s.className = 'usa-step-indicator__segment' + (k < i ? ' usa-step-indicator__segment--complete' : k === i ? ' usa-step-indicator__segment--current' : '');
+      });
+      cur.textContent = i + 1;
+      label.textContent = screens[i].getAttribute('data-label');
+      back.disabled = i === 0;
+      next.hidden = i === screens.length - 1;
+      window.scrollTo(0, 0);
+    }
+    back.addEventListener('click', function () { show(i - 1); });
+    next.addEventListener('click', function () { show(i + 1); });
+    var x0 = null, y0 = null;
+    document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      x0 = y0 = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? i + 1 : i - 1);
+    }, { passive: true });
+
+    var END = Date.UTC(2026, 8, 21, 3, 59, 59); /* Sept 20, 2026, 11:59 PM Eastern */
+    var cd = document.getElementById('countdown');
+    function tick() {
+      var ms = END - Date.now();
+      if (ms <= 0) { cd.textContent = 'Comments closed September 20.'; return; }
+      var h = Math.floor(ms / 36e5), d = Math.floor(h / 24), m = Math.floor(ms / 6e4) % 60;
+      cd.textContent = d >= 1
+        ? 'Closes in ' + d + (d === 1 ? ' day ' : ' days ') + (h % 24) + ' hours'
+        : 'Closes in ' + h + ' hours ' + m + ' minutes';
+    }
+    tick(); setInterval(tick, 60000);
+
+    var pre = document.getElementById('prompt'), status = document.getElementById('status'), reveal = document.getElementById('reveal');
+    function fail() {
+      reveal.open = true;
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      status.textContent = 'Selected. Press Ctrl+C or Cmd+C.';
+    }
+    document.getElementById('copy').addEventListener('click', function () {
+      try { navigator.clipboard.writeText(pre.textContent).then(function () { status.textContent = 'Copied. Now open Claude and paste.'; }, fail); }
+      catch (e) { fail(); }
+    });
+  })();
+</script>
+
+</body>
+</html>
